@@ -3,7 +3,7 @@ services:
     name: flight-booking-app
     runtime: python
     plan: free
-    region: oregon
+    region: ohio
     branch: main
     # Python-only by design. The frontend is built locally and its output is
     # committed under static/, so this build never depends on Node being
