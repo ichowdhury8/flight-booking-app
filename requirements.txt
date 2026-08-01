@@ -1,0 +1,5 @@
+# Pinned to the versions verified locally on Python 3.12.13.
+fastapi==0.141.1
+uvicorn[standard]==0.52.0
+SQLAlchemy==2.0.51
+email-validator==2.3.0

@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: flight-booking-app
+    runtime: python
+    plan: free
+    region: oregon
+    branch: main
+    # Python-only by design. The frontend is built locally and its output is
+    # committed under static/, so this build never depends on Node being
+    # available in Render's image. See PLAN.md R3.
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.13"
