@@ -39,7 +39,7 @@ export default function TransferCallout({ transport, distanceKm }) {
         </div>
 
         {transport.cost_note && (
-          <div>
+          <div className={styles.fareCell}>
             {/* Deliberately smaller than the two figures beside it: the cost
                 note is free prose in the destination's own currency (A16) and
                 runs from "~€6 one way" to a full sentence. Sizing it like a

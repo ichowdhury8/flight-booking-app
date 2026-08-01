@@ -111,6 +111,14 @@
   .statValue {
     font-size: var(--text-xl);
   }
+
+  /* The two figures share the row; the fare takes its own full-width line.
+     Left in the 2-up grid it gets ~157px at phone widths, which wraps the
+     longer notes ("~$2.50 one way, plus $2 for a reusable Breeze card") into
+     four ragged lines. */
+  .fareCell {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 400px) {
