@@ -1,54 +1,46 @@
-import { formatDistance } from "../../lib/format";
+import AttractionCard, { attractionStyles } from "./AttractionCard";
+import TransferCallout from "./TransferCallout";
+import styles from "./ArrivalGuide.module.css";
 
-/* ---------------------------------------------------------------------------
- * DELIBERATELY UNSTYLED — task 14 builds the real UI.
+/* The custom feature. Every field below is read from SQLite via the booking
+ * response — nothing here calls an external service at runtime.
  *
- * This renders the guide data faithfully so the whole happy path is walkable
- * and the content is reviewable, but it has no stylesheet of its own on
- * purpose. In particular:
- *
- *   - The destination city name is SERIF #2 of 4. It is Inter here; the
- *     `.display` class goes on at task 14 along with the rest of <GuideHeader>.
- *   - <TransferCallout> gets the --accent-wash block at task 14.
- *   - <AttractionCard> becomes real cards at task 14. Attraction names stay
- *     Inter 600 — they are the most tempting place to reach for the serif and
- *     the instruction was city name only.
- *
- * Rendered conditionally by the caller so a missing guide degrades quietly
- * (PLAN.md R7).
- * ------------------------------------------------------------------------- */
+ * Visual hierarchy is deliberate: the transfer callout is the hero, because it
+ * is the part a traveller actually acts on when they land. The attractions are
+ * secondary and styled to stay that way.
+ */
 export default function ArrivalGuide({ guide }) {
-  const { transport } = guide;
-
   return (
-    <section>
-      <h2>Arriving in {guide.city}</h2>
-      <p>{guide.intro}</p>
+    <section className={styles.guide} aria-labelledby="guide-city">
+      <header className={styles.header}>
+        {/* The country lives here, not in the heading. Nested inside the h2 it
+            inherited the serif, and the spec is the city name only. */}
+        <p className={styles.eyebrow}>Arrival guide · {guide.country}</p>
+        {/* SERIF #2 of 4 — see global.css */}
+        <h2 className={`display ${styles.city}`} id="guide-city">
+          {guide.city}
+        </h2>
+        <p className={styles.intro}>{guide.intro}</p>
+      </header>
 
-      <h3>Getting into the city</h3>
-      <p>
-        {formatDistance(guide.distance_km)} from {guide.airport.name} (
-        {guide.airport.iata_code}) to the city centre.
-      </p>
-      <p>
-        <strong>{transport.name}</strong> ({transport.mode}) — about{" "}
-        {transport.minutes} minutes
-        {transport.cost_note ? `, ${transport.cost_note}` : ""}.
-      </p>
-      {transport.notes && <p>{transport.notes}</p>}
+      <TransferCallout
+        transport={guide.transport}
+        distanceKm={guide.distance_km}
+      />
 
-      <h3>While you're there</h3>
-      <ul>
-        {guide.attractions.map((attraction) => (
-          <li key={attraction.name}>
-            <strong>{attraction.name}</strong> ({attraction.category}) —{" "}
-            {attraction.description}
-          </li>
-        ))}
-      </ul>
+      <div className={styles.attractions}>
+        <h3 className={styles.attractionsHeading}>While you're there</h3>
 
-      <p>
-        <small>Distances and journey times are approximate.</small>
+        <ul className={attractionStyles.list}>
+          {guide.attractions.map((attraction) => (
+            <AttractionCard key={attraction.name} attraction={attraction} />
+          ))}
+        </ul>
+      </div>
+
+      {/* A13: this content is general knowledge, not authoritative. */}
+      <p className={styles.disclaimer}>
+        Distances, journey times and fares are approximate.
       </p>
     </section>
   );

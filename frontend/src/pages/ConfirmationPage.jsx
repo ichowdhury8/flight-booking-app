@@ -66,13 +66,18 @@ export default function ConfirmationPage() {
     <>
       <StepIndicator step={3} />
 
+      {/* Two columns rather than stacked: the reference sat under the lede and
+          pushed the Arrival Guide most of a screen further down for no reason,
+          while the right half of the header was empty. */}
       <header className={styles.header}>
-        {/* SERIF #3 of 4 — see global.css */}
-        <h1 className={`display ${styles.title}`}>You're booked</h1>
-        <p className={styles.lede}>
-          Keep this reference — it's the only way to find this booking again.
-          No account was created and no email has been sent.
-        </p>
+        <div className={styles.headerMain}>
+          {/* SERIF #3 of 4 — see global.css */}
+          <h1 className={`display ${styles.title}`}>You're booked</h1>
+          <p className={styles.lede}>
+            Keep this reference — it's the only way to find this booking again.
+            No account was created and no email has been sent.
+          </p>
+        </div>
 
         <div className={styles.referenceBlock}>
           <span className={styles.referenceLabel}>Booking reference</span>
@@ -119,12 +124,8 @@ export default function ConfirmationPage() {
         </aside>
       </div>
 
-      {/* Unstyled on purpose — task 14 builds the real Arrival Guide UI. */}
-      {booking.arrival_guide && (
-        <div className={styles.guideSlot}>
-          <ArrivalGuide guide={booking.arrival_guide} />
-        </div>
-      )}
+      {/* Rendered conditionally so a missing guide degrades quietly (R7). */}
+      {booking.arrival_guide && <ArrivalGuide guide={booking.arrival_guide} />}
 
       <div className={styles.actions}>
         <Button as={Link} to="/" variant="secondary">

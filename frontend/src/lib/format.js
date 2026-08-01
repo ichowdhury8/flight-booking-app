@@ -54,7 +54,13 @@ export function dayOffset(from, to) {
 
 /** 16 -> "10 mi (16 km)"  (A15) */
 export function formatDistance(km) {
-  return `${Math.round(km * 0.621371)} mi (${Math.round(km)} km)`;
+  const { miles, kilometres } = distanceParts(km);
+  return `${miles} mi (${kilometres} km)`;
+}
+
+/** The same conversion, unformatted, for laying the two units out separately. */
+export function distanceParts(km) {
+  return { miles: Math.round(km * 0.621371), kilometres: Math.round(km) };
 }
 
 /** Date -> "2026-08-02", in local time rather than UTC. */
