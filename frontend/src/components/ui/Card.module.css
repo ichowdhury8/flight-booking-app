@@ -1,0 +1,19 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border); /* decorative hairline — 1.20:1 is fine here */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.padded {
+  padding: var(--space-5);
+}
+
+.interactive {
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.interactive:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow);
+}

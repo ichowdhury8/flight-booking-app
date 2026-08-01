@@ -1,0 +1,16 @@
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: #fdf6f4;
+  border: 1px solid #e6c9c2;
+  border-radius: var(--radius-sm);
+  color: #7d2020;
+  font-size: var(--text-sm);
+}
+
+.mark {
+  flex-shrink: 0;
+  font-weight: 600;
+}

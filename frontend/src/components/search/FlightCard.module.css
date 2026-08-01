@@ -1,0 +1,166 @@
+/* Every element here is Inter. The serif does not appear on this card — not on
+ * the airline, not on the times, not on the price. See PLAN.md §5.1. */
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-5);
+  align-items: center;
+}
+
+.main {
+  min-width: 0;
+}
+
+.carrier {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.airline {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* --- timeline ------------------------------------------------------------ */
+
+.timeline {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.endpoint {
+  min-width: 88px;
+}
+
+.time {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.code {
+  margin-top: 2px;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.arrivalTime {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+}
+
+/* Next-day arrival. On an overnight transatlantic leg this is the single most
+   important thing on the card. */
+.nextDay {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  padding-top: 3px;
+}
+
+.middle {
+  flex: 1;
+  min-width: 64px;
+  padding-top: 7px;
+}
+
+.duration {
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.rule {
+  position: relative;
+  height: 1px;
+  background: var(--border-strong);
+  opacity: 0.5;
+}
+
+.rule::before,
+.rule::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border-strong);
+  transform: translateY(-50%);
+}
+
+.rule::before {
+  left: 0;
+}
+
+.rule::after {
+  right: 0;
+}
+
+.seats {
+  margin-top: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.seatsLow {
+  color: #8a5a12;
+}
+
+/* --- price and action ---------------------------------------------------- */
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-3);
+  text-align: right;
+}
+
+.price {
+  font-size: var(--text-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.priceMeta {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+@media (max-width: 640px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .aside {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    text-align: left;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border);
+  }
+
+  .endpoint {
+    min-width: 72px;
+  }
+
+  .time {
+    font-size: var(--text-lg);
+  }
+}

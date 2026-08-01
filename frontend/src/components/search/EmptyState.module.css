@@ -1,0 +1,19 @@
+.empty {
+  padding: var(--space-8) var(--space-5);
+  text-align: center;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+}
+
+.title {
+  font-size: var(--text-lg);
+  color: var(--text);
+  margin-bottom: var(--space-2);
+}
+
+.body {
+  font-size: var(--text-sm);
+  max-width: 44ch;
+  margin-inline: auto;
+}

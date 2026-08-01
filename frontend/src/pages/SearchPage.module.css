@@ -1,0 +1,73 @@
+.hero {
+  margin-bottom: var(--space-6);
+}
+
+/* The one serif moment on this page. 56px is doing the work of a bold weight —
+ * Instrument Serif ships only 400. */
+.heroTitle {
+  max-width: 20ch;
+  font-size: 56px;
+  line-height: 1.05;
+}
+
+.heroSub {
+  margin-top: var(--space-4);
+  max-width: 46ch;
+  color: var(--text-muted);
+  font-size: var(--text-lg);
+}
+
+.formCard {
+  padding: var(--space-5);
+}
+
+.results {
+  margin-top: var(--space-8);
+}
+
+.resultsHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-5);
+}
+
+/* h2 — Inter 600, not the serif. */
+.resultsTitle {
+  font-size: var(--text-xl);
+}
+
+.resultsMeta {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.prompt {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 640px) {
+  .heroTitle {
+    font-size: 40px;
+  }
+
+  .heroSub {
+    font-size: var(--text-base);
+  }
+}

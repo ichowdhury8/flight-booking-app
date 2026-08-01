@@ -1,0 +1,64 @@
+/* Design tokens — PLAN.md §5.1.
+ *
+ * The first four values are given and used verbatim. Everything else is derived
+ * from them.
+ *
+ * Contrast, computed:
+ *   --accent on --bg ............ 8.38:1
+ *   --surface on --accent ....... 8.88:1
+ *   --text on --bg ............. 16.4:1
+ *   --border on --bg ............ 1.20:1   <- decorative only, see below
+ *   --border-strong on --bg ..... 3.54:1
+ *
+ * That 1.20:1 is correct for hairlines and card edges but well below the 3:1
+ * WCAG 1.4.11 requires for the boundary of an interactive control. So inputs
+ * get --border-strong and everything else keeps --border. Without the split the
+ * form is pretty and effectively invisible.
+ */
+
+:root {
+  /* Given */
+  --accent: #0f5257;
+  --bg: #faf8f5;
+  --text: #1a1a17;
+  --border: #e8e3db;
+
+  /* Derived */
+  --surface: #ffffff;
+  --text-muted: #6b6862;
+  --accent-hover: #0a3d41;
+  --accent-wash: #edf2f1;
+  --border-strong: #8a8378;
+
+  --focus-ring: 0 0 0 3px rgba(15, 82, 87, 0.4);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  --shadow: 0 1px 2px rgba(26, 26, 23, 0.04), 0 8px 24px rgba(26, 26, 23, 0.06);
+  --shadow-sm: 0 1px 2px rgba(26, 26, 23, 0.05);
+
+  /* 8px-based spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Type. --font-display is applied by the .display class and nowhere else. */
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 20px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+
+  --measure: 1120px;
+}

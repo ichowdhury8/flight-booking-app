@@ -1,0 +1,142 @@
+@import "./tokens.css";
+
+/* ---------------------------------------------------------------------------
+ * Reset
+ * ------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---------------------------------------------------------------------------
+ * Typography
+ *
+ * There is deliberately NO global heading rule. If `h1, h2 { font-family: serif }`
+ * existed, the serif would leak into section headings, the booking reference and
+ * the flight cards. Instrument Serif is applied ONLY by `.display`, used in
+ * exactly four places across the whole app (PLAN.md §5.1):
+ *
+ *   1. <Hero> h1 on SearchPage          56px / 1.05
+ *   2. <GuideHeader> destination city   40px / 1.1
+ *   3. <ConfirmationHeader> h1          40px / 1.1
+ *   4. <NotFoundPage> h1                40px / 1.1
+ * ------------------------------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 400; /* the family ships one weight; size carries the emphasis */
+  letter-spacing: -0.01em;
+}
+
+/* Times, dates, durations, prices, airport codes and the booking reference.
+   Tabular figures so stacked cards read as a column. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+ * Focus — one visible ring everywhere, never removed
+ * ------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+/* ---------------------------------------------------------------------------
+ * Layout shell
+ * ------------------------------------------------------------------------- */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+.main {
+  flex: 1;
+  padding-block: var(--space-8) var(--space-9);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+  .main {
+    padding-block: var(--space-6) var(--space-8);
+  }
+}
+
+/* Visually hidden but available to screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

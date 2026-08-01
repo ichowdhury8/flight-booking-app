@@ -1,0 +1,25 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 168px 148px auto;
+  gap: var(--space-4);
+  align-items: end;
+}
+
+.submit {
+  height: 46px; /* matches the control height so the row baseline is flat */
+}
+
+@media (max-width: 940px) {
+  .form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .submit {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .form {
+    grid-template-columns: 1fr;
+  }
+}
