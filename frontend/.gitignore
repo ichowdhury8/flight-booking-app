@@ -1,0 +1,28 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# NOTE: `dist` above is vestigial — vite.config.js writes the build to ../static,
+# which is OUTSIDE this directory and is deliberately COMMITTED to git so Render's
+# build command stays Python-only. See PLAN.md R3. Do not add static/ anywhere.
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
