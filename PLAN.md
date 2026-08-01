@@ -121,8 +121,13 @@ stays queryable.
 | `last_name` | TEXT NOT NULL | |
 | `date_of_birth` | DATE | optional in v1 |
 
-**Reference code generation:** 6 characters from `ABCDEFGHJKLMNPQRSTUVWXYZ23456789` (no `0/O/1/I/5/S`
-ambiguity). Generate, attempt insert, retry up to 5 times on the UNIQUE constraint.
+**Reference code generation:** 6 characters from `ABCDEFGHJKLMNPQRTUVWXYZ2346789` — 30 characters, with
+both halves of each ambiguous pair removed (`0/O`, `1/I`, `5/S`). Generate, attempt insert, retry up to 5
+times on the UNIQUE constraint. 30⁶ ≈ 729 million.
+
+> Corrected at task 16. Earlier revisions gave the alphabet as
+> `ABCDEFGHJKLMNPQRSTUVWXYZ23456789`, which still contained `S` and `5` and so contradicted the stated
+> rule beside it. The implementation follows the rule; a test asserts it.
 
 ---
 
