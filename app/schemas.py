@@ -167,6 +167,8 @@ class BookingOut(BaseModel):
     reference: str
     status: str
     created_at: datetime
+    contact_email: str
+    contact_phone: str | None
     total_price_minor: int
     currency: str
     flight: FlightOut
@@ -186,6 +188,10 @@ def to_booking_out(booking: Booking, guide: ArrivalGuide | None) -> BookingOut:
         reference=booking.reference,
         status=booking.status,
         created_at=booking.created_at,
+        # Exposed by design: a reference is the only credential, and A2 states
+        # that whoever holds one can see the names and contact email on it.
+        contact_email=booking.contact_email,
+        contact_phone=booking.contact_phone,
         total_price_minor=booking.total_price_minor,
         currency=booking.currency,
         flight=to_flight_out(booking.flight),

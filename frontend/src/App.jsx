@@ -2,8 +2,9 @@ import { Route, Routes } from "react-router-dom";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import ConfirmationPage from "./pages/ConfirmationPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import PlaceholderPage from "./pages/PlaceholderPage";
+import PassengerPage from "./pages/PassengerPage";
 import SearchPage from "./pages/SearchPage";
 
 export default function App() {
@@ -15,14 +16,8 @@ export default function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<SearchPage />} />
-            <Route
-              path="/book/:flightId"
-              element={<PlaceholderPage title="Passenger details" task={11} />}
-            />
-            <Route
-              path="/booking/:reference"
-              element={<PlaceholderPage title="Booking confirmed" task={12} />}
-            />
+            <Route path="/book/:flightId" element={<PassengerPage />} />
+            <Route path="/booking/:reference" element={<ConfirmationPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
