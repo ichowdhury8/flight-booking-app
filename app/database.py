@@ -5,13 +5,20 @@ recreated and reseeded on every cold start — see PLAN.md R1. That is a deliber
 trade, and it has the side benefit of keeping the 14-day flight window always fresh.
 """
 
+import os
 from collections.abc import Iterator
 from pathlib import Path
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
-DB_PATH = Path(__file__).resolve().parent.parent / "flights.db"
+# FLIGHTS_DB_PATH lets the test suite point at a throwaway file instead of the
+# working database. Unset in production, where the default is correct.
+DB_PATH = Path(
+    os.environ.get(
+        "FLIGHTS_DB_PATH", Path(__file__).resolve().parent.parent / "flights.db"
+    )
+)
 DATABASE_URL = f"sqlite:///{DB_PATH}"
 
 # check_same_thread=False: FastAPI serves requests from a threadpool, and each
